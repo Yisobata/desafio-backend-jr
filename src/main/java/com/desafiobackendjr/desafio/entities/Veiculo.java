@@ -2,21 +2,41 @@ package com.desafiobackendjr.desafio.entities;
 
 import java.io.Serializable;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name= "tb_veiculo")
 public class Veiculo implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
-	private String proprietario;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 	private String cpf;
+	private String proprietario;
 	private String placa;
 	
 	public Veiculo() {
 	}
 
-	public Veiculo(String proprietario, String cpf, String placa) {
+	public Veiculo(Long id, String proprietario, String cpf, String placa) {
 		super();
+		this.id = id;
 		this.proprietario = proprietario;
 		this.cpf = cpf;
 		this.placa = placa;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getProprietario() {

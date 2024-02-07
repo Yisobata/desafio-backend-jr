@@ -13,7 +13,7 @@ public class VeiculoResource {
 
 	@GetMapping
 	public ResponseEntity<Veiculo> findAll(){
-		Veiculo v = new Veiculo("José da Silva", "203.397.390-53", "ABC1234");
+		Veiculo v = new Veiculo(null, "José da Silva", "203.397.390-53", "ABC1234");
 		return ResponseEntity.ok().body(v);
 	}
 }
