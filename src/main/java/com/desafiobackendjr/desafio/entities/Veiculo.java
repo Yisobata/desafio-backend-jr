@@ -6,29 +6,36 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 
 @Entity
-@Table(name= "tb_veiculo")
 public class Veiculo implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String cpf;
 	private String proprietario;
 	private String placa;
-	
+	private String marca;
+	private String modelo;
+	private String chassi;
+	private String licenciado;
+
 	public Veiculo() {
 	}
-
-	public Veiculo(Long id, String proprietario, String cpf, String placa) {
+	
+	public Veiculo(Long id, String cpf, String proprietario, String placa, String marca, String modelo, String chassi,
+			String licenciado) {
 		super();
 		this.id = id;
-		this.proprietario = proprietario;
 		this.cpf = cpf;
+		this.proprietario = proprietario;
 		this.placa = placa;
+		this.marca = marca;
+		this.modelo = modelo;
+		this.chassi = chassi;
+		this.licenciado = licenciado;
 	}
 
 	public Long getId() {
@@ -39,20 +46,20 @@ public class Veiculo implements Serializable {
 		this.id = id;
 	}
 
-	public String getProprietario() {
-		return proprietario;
-	}
-
-	public void setProprietario(String proprietario) {
-		this.proprietario = proprietario;
-	}
-
 	public String getCpf() {
 		return cpf;
 	}
 
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
+	}
+
+	public String getProprietario() {
+		return proprietario;
+	}
+
+	public void setProprietario(String proprietario) {
+		this.proprietario = proprietario;
 	}
 
 	public String getPlaca() {
@@ -63,12 +70,43 @@ public class Veiculo implements Serializable {
 		this.placa = placa;
 	}
 
+	public String getMarca() {
+		return marca;
+	}
+
+	public void setMarca(String marca) {
+		this.marca = marca;
+	}
+
+	public String getModelo() {
+		return modelo;
+	}
+
+	public void setModelo(String modelo) {
+		this.modelo = modelo;
+	}
+
+	public String getChassi() {
+		return chassi;
+	}
+
+	public void setChassi(String chassi) {
+		this.chassi = chassi;
+	}
+
+	public String getLicenciado() {
+		return licenciado;
+	}
+
+	public void setLicenciado(String licenciado) {
+		this.licenciado = licenciado;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((cpf == null) ? 0 : cpf.hashCode());
-		result = prime * result + ((placa == null) ? 0 : placa.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
 
@@ -81,17 +119,13 @@ public class Veiculo implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Veiculo other = (Veiculo) obj;
-		if (cpf == null) {
-			if (other.cpf != null)
+		if (id == null) {
+			if (other.id != null)
 				return false;
-		} else if (!cpf.equals(other.cpf))
-			return false;
-		if (placa == null) {
-			if (other.placa != null)
-				return false;
-		} else if (!placa.equals(other.placa))
+		} else if (!id.equals(other.id))
 			return false;
 		return true;
 	}
+
 	
 }
