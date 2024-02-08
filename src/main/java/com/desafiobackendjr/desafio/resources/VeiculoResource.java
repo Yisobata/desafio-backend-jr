@@ -38,12 +38,13 @@ public class VeiculoResource {
 	
 	@PostMapping
 	public ResponseEntity<Veiculo> insert(@RequestBody Veiculo obj){
-		obj = service.insert(obj);
+		
 		veiculoDTO = service.consultaVeiculo();
 		obj.setChassi(veiculoDTO.getChassi());
 		obj.setMarca(veiculoDTO.getMarca());
 		obj.setModelo(veiculoDTO.getModelo());
 		obj.setLicenciado(veiculoDTO.getLicenciado());
+		obj = service.insert(obj);
 		return ResponseEntity.ok().body(obj);
 	}
 }
